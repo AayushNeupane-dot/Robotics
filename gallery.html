@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSN Robotics Club</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="icon" href="images/favicon.svg">
+    <link rel="manifest" href="images/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/27061a3f4a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+
+        .gallery-container {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .gallery-container h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .event-gallery {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .event-gallery:last-child {
+            border-bottom: none;
+        }
+
+        .event-gallery h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .gallery-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .gallery-title::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 4px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.4s ease, background-color 0.4s ease;
+        }
+
+        .gallery-title:hover::after {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-title-container {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-container {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .galleryItem {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .galleryItem:hover {
+            transform: scale(1.03);
+        }
+
+        .galleryItem img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .event-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .galleryItem:hover .event-title {
+            opacity: 1;
+        }
+
+        .lightbox .event-title-lightbox {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .gallery-title {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .event-date {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .event-details {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .navigation {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .prevButton, .nextButton {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .prevButton:hover, .nextButton:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .lock-scroll {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-container {
+                padding: 20px;
+            }
+
+            .gallery-container h1 {
+                font-size: 28px;
+            }
+
+            .event-gallery h2 {
+                font-size: 24px;
+            }
+
+            .event-details {
+                font-size: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .galleryItem {
+                padding-top: 75%;
+            }
+
+            .galleryItem img {
+                object-fit: cover;
+            }
+
+            .event-title {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+        <!-- Navbar-->
+        <nav id="navbar">
+            <h1 class="title">
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="">
+                </a>
+            </h1>
+            <div class="hamburger">&#9776;</div>
+            <ul class="nav">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="index.html#notice"><i class="fa-solid fa-bell"></i> Notice/Post</a></li>
+                <li><a href="gallery.html"><i class="fa-light fa-gallery-thumbnails"></i> Gallery</a></li>
+                <li><a href="form.html"><i class="fa-solid fa-file-invoice"></i> Forms</a></li>
+                <li><a href="aboutus.html"><i class="fa-regular fa-address-card"></i> About Us</a></li>
+            </ul>
+        </nav> 
+        <div class="gallery-container">
+            <div class="gallery-title-container">
+                <h1 class="gallery-title" data-aos="fade-up" data-aos-duration="1000">Our Gallery</h1>
+            </div>    
+                <!-- Gallery -->
+                <div class="event-gallery" data-aos="fade-up" data-aos-duration="1500">
+                    <h2 class="gallery-title">Celebrating the Victory of Kathmandu University & Virinchi College!</h2>
+                    <p class="event-date">Date: December 21, 2024</p>
+                    <p class="event-details">We celebrated our hard-earned victory at Kathmandu University and Virinchi College! 🏆🎉 Despite the challenges, we persevered and emerged victorious.</p>
+                    <div class="gallery">
+                        <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="images/gallery/cele/1.jpg" alt="AI Meet 2024 1">
+                            <div class="event-title">Victory Celebration</div>
+                        </div>
+                        <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="images/gallery/cele/2.jpg" alt="AI Meet 2024 2">
+                            <div class="event-title">Victory Celebration</div>
+                        </div>
+                        <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="images/gallery/cele/3.jpg" alt="AI Meet 2024 3">
+                            <div class="event-title">Victory Celebration</div>
+                        </div>
+                        <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="images/gallery/cele/4.jpg" alt="AI Meet 2024 4">
+                            <div class="event-title">Victory Celebration</div>
+                        </div>
+                        <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="images/gallery/cele/5.jpg" alt="AI Meet 2024 5">
+                            <div class="event-title">Victory Celebration</div>
+                        </div>
+                        <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="images/gallery/cele/6.jpg" alt="AI Meet 2024 6">
+                            <div class="event-title">Victory Celebration</div>
+                        </div>
+                        <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="images/gallery/cele/7.jpg" alt="AI Meet 2024 7">
+                            <div class="event-title">Victory Celebration</div>
+                        </div>
+                        <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                            <img src="images/gallery/cele/8.jpg" alt="AI Meet 2024 8">
+                            <div class="event-title">Victory Celebration</div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Gallery -->
+              <div class="event-gallery" data-aos="fade-up" data-aos-duration="1500">
+                <h2 class="gallery-title">First Place in AI Meet at Kathmandu University 2024!</h2>
+                <p class="event-date">Date: December 17, 2024</p>
+                <p class="event-details">We did it again! 🥇The VSN Robotics Club secured first place at the Kathmandu University AI Meet 2024! 🤖🏆 Back-to-back victories fueled our drive to innovate and reach even greater heights. 🚀🔥</p>
+                <div class="gallery">
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/1.jpg" alt="AI Meet 2024 2">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/2.jpg" alt="AI Meet 2024 2">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/3.jpg" alt="AI Meet 2024 3">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/4.jpg" alt="AI Meet 2024 4">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/5.jpg" alt="AI Meet 2024 5">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/6.jpg" alt="AI Meet 2024 6">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/7.jpg" alt="AI Meet 2024 7">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/8.jpg" alt="AI Meet 2024 8">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/aimeet/9.jpg" alt="AI Meet 2024 9">
+                        <div class="event-title">AI Meet 2024</div>
+                    </div>  
+                </div>
+            </div>
+
+                <!-- Gallery -->
+              <div class="event-gallery" data-aos="fade-up" data-aos-duration="1500">
+                <h2 class="gallery-title">First Place in Robo Soccer at Virinchi College ICT Mela 5.0!</h2>
+                <p class="event-date">Date: December 7, 2024</p>
+                <p class="event-details">We were thrilled to announce that the VSN Robotics Club claimed 🥇 first place in the Virinchi College ICT Mela 5.0 Robo Soccer Competition! 🤖⚽ This incredible achievement pushed us to break boundaries and strive for even greater success. 🚀🔥</p>
+                <div class="gallery">
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/virinchi/1.jpg" alt="ICT Mela 5.0 1">
+                        <div class="event-title">ICT Mela 5.0</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/virinchi/2.jpg" alt="ICT Mela 5.0 2">
+                        <div class="event-title">ICT Mela 5.0</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/virinchi/3.jpg" alt="ICT Mela 5.0 3">
+                        <div class="event-title">ICT Mela 5.0</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/virinchi/4.jpg" alt="ICT Mela 5.0 4">
+                        <div class="event-title">ICT Mela 5.0</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/virinchi/5.jpg" alt="ICT Mela 5.0 5">
+                        <div class="event-title">ICT Mela 5.0</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/virinchi/6.jpg" alt="ICT Mela 5.0 6">
+                        <div class="event-title">ICT Mela 5.0</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/virinchi/7.jpg" alt="ICT Mela 5.0 7">
+                        <div class="event-title">ICT Mela 5.0</div>
+                    </div>
+                           
+                </div>
+            </div>
+
+              <!-- Gallery -->
+              <div class="event-gallery" data-aos="fade-up" data-aos-duration="1500">
+                <h2 class="gallery-title">Python Workshop</h2>
+                <p class="event-date">Date: October 29, 2024</p>
+                <p class="event-details">On this day, we took creativity beyond college! We taught school students how to code and build interactive projects in Python, showing them how computers can respond and make choices. No limits with Python!</p>
+                <div class="gallery">
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/1.jpg" alt="Python Workshop 1">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/2.jpg" alt="Python Workshop 2">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/3.jpg" alt="Python Workshop 3">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/4.jpg" alt="Python Workshop 4">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/5.jpg" alt="Python Workshop 5">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/6.jpg" alt="Python Workshop 6">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/7.jpg" alt="Python Workshop 7">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/8.jpg" alt="Python Workshop 8">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/9.jpg" alt="Python Workshop 9">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/10.jpg" alt="Python Workshop 10">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/11.jpg" alt="Python Workshop 11">
+                        <div class="event-title">Python Workshop</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/workshop/12.jpg" alt="Python Workshop 12">
+                        <div class="event-title">Python Workshop</div>
+                    </div>                    
+                </div>
+            </div>
+        
+              <!--Gallery -->
+              <div class="event-gallery" data-aos="fade-up" data-aos-duration="1500">
+                <h2 class="gallery-title">VSN Robotics Club Orientation</h2>
+                <p class="event-date">Date: August 21, 2024</p>
+                <p class="event-details">Kickstarting innovation and teamwork at our VSN Robotics Club Orientation! Exciting times ahead as we welcome new minds into the world of robotics and technology.</p>
+                <div class="gallery">
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/1.jpg" alt="VSN Robotics Club Orientation 1">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/2.jpg" alt="VSN Robotics Club Orientation 2">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/3.jpg" alt="VSN Robotics Club Orientation 3">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/4.jpg" alt="VSN Robotics Club Orientation 4">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/5.jpg" alt="VSN Robotics Club Orientation 5">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/6.jpg" alt="VSN Robotics Club Orientation 6">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/7.jpg" alt="VSN Robotics Club Orientation 7">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/8.jpg" alt="VSN Robotics Club Orientation 8">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/9.jpg" alt="VSN Robotics Club Orientation 9">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/10.jpg" alt="VSN Robotics Club Orientation 10">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                    <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                        <img src="images/gallery/orientation/11.jpg" alt="VSN Robotics Club Orientation 11">
+                        <div class="event-title">VSN Robotics Club Orientation</div>
+                    </div>
+                </div>
+            </div>
+        <!--Gallery -->
+        <div class="event-gallery" data-aos="fade-up" data-aos-duration="1500">
+            <h2 class="gallery-title">Celebrating Winning at KU Event in School</h2>
+            <p class="event-date">Date: March 19, 2024</p>
+            <p class="event-details">The KU Event was an incredible achievement where students demonstrated outstanding skills and creativity in robotics, bringing pride to the school with a remarkable victory.</p>
+            <div class="gallery">
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery1.jpeg" alt="KU Event Celebration 1">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery2.jpeg" alt="KU Event Celebration 2">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery3.jpeg" alt="KU Event Celebration 3">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery4.jpeg" alt="KU Event Celebration 4">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery5.jpeg" alt="KU Event Celebration 5">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery6.jpeg" alt="KU Event Celebration 6">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery7.jpeg" alt="KU Event Celebration 7">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery8.jpeg" alt="KU Event Celebration 8">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery9.jpeg" alt="KU Event Celebration 9">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery10.jpeg" alt="KU Event Celebration 10">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery11.jpeg" alt="KU Event Celebration 11">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery12.jpeg" alt="KU Event Celebration 12">
+                    <div class="event-title">Celebrating Winning at KU Event</div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <!-- Gallery -->
+        <div class="event-gallery" data-aos="fade-up" data-aos-duration="1500">
+            <h2 class="gallery-title">Victory at Aavishkar 24</h2>
+            <p class="event-date">Date: March 18, 2024</p>
+            <p class="event-details">
+                We are thrilled to announce that we secured the first position at Aavishkar 24's project demonstration organized by the Kathmandu University Robotics Club! 🏆 This achievement highlights the dedication and innovative spirit of our team. #aavishkar
+            </p>
+            <div class="gallery">
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery13.jpeg" alt="Aavishkar 24 Celebration 1">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery18.jpeg" alt="Aavishkar 24 Celebration 6">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery19.jpeg" alt="Aavishkar 24 Celebration 7">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery20.jpg" alt="Aavishkar 24 Celebration 8">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery21.jpg" alt="Aavishkar 24 Celebration 9">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery22.jpg" alt="Aavishkar 24 Celebration 10">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery23.jpg" alt="Aavishkar 24 Celebration 11">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery24.jpg" alt="Aavishkar 24 Celebration 12">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery25.jpg" alt="Aavishkar 24 Celebration 13">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery26.jpg" alt="Aavishkar 24 Celebration 14">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery14.jpg" alt="Aavishkar 24 Celebration 15">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+                <div class="galleryItem" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="images/gallery/gallery27.jpg" alt="Aavishkar 24 Celebration 15">
+                    <div class="event-title">Aavishkar 24 Victory</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    
+        <!-- Lightbox Structure -->
+        <div class="lightbox" data-aos="fade-in" data-aos-duration="1000" style="display: none;">
+            <span class="close" data-aos="fade-in" data-aos-duration="1000">&times;</span>
+            <img class="lightboxImage" src="" alt="">
+            <div class="event-title-lightbox"></div>
+            <div class="navigation" data-aos="fade-in" data-aos-duration="1000">
+                <button class="prevButton">&#10094;</button>
+                <button class="nextButton">&#10095;</button>
+            </div>
+        </div>
+
+                <!-- Footer Section -->
+                <footer class="footer">
+                    <div class="footerContainer">
+                        <div class="footerLogo">
+                            <h3>VSN Robotics Club</h3>
+                            <h6 style="margin-top: 5px; font-weight: normal; color:#e6d9d9;">Minbhawan, Kathmandu, Nepal</h6>
+                        </div>
+    
+                        <div class="footerLinks">
+                            <ul>
+                                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                                <li><a href="index.html#notice"><i class="fa-solid fa-bell"></i> Notice/Post</a></li>
+                                <li><a href="gallerytest.html"><i class="fa-light fa-gallery-thumbnails"></i> Gallery</a></li>
+                                <li><a href="form.html"><i class="fa-solid fa-file-invoice"></i> Forms</a></li>
+                                <li><a href="aboutus.html"><i class="fa-regular fa-address-card"></i> About Us</a></li>
+                            </ul>
+                        </div>
+    
+                        <div class="footerSocial">
+                            <h3>Follow Us</h3>
+                            <ul>
+                                <li><a href="https://www.facebook.com/vsnroboticsclub" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.instagram.com/vsnroboticsclub/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="footerBottom">
+                        <p>
+                            <a href="tel:+9779813457609">+977 9813457609</a><br>
+                            <a href="mailto:info@vsnroboticsclub.com">info@vsnroboticsclub.com</a>
+                          </p>
+                        <p style="font-size: 0.8em; margin-top: 20px;">&copy; 2025 VSN Robotics Club. All rights reserved.<br><br>Created by VSN Robotics Club Batch 2081.</p>
+                    </div>
+                </footer>
+    
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

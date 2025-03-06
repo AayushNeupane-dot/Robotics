@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSN Robotics Club</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="icon" href="images/favicon.svg">
+    <link rel="manifest" href="images/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
+    <script src="Js/main.js"></script>
+    <script src="https://kit.fontawesome.com/27061a3f4a.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="https://kit.fontawesome.com/27061a3f4a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.content-wrap {
+    flex: 1; 
+}
+
+.containerMain {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.containerForm {
+    display: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.containerForm h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+
+.formSelector {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.formSelector div {
+    padding: 15px 20px; 
+    border: 2px solid #333; 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center; 
+    color: #333; 
+    font-weight: bold; 
+}
+
+.formSelector div:hover {
+    background-color: #f0f0f0;
+}
+#experience::placeholder {
+        color: transparent;
+    }
+#experience:focus::placeholder {
+        color: #888; 
+    }
+.form-section {
+    margin-bottom: 20px;
+}
+
+.question-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+.form-section input[type="checkbox"] {
+    margin-right: 10px; 
+    vertical-align: middle;
+}
+.form-section label {
+    font-size: 16px;
+    color: #333;
+    display: inline;
+    vertical-align: middle;
+}
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group div {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 8px;
+}
+
+.radio-group label {
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"]:hover + label {
+    color: #000;
+    font-weight: bold;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"]:hover + label {
+    color: #000;
+    font-weight: bold;
+}
+
+.radio-group input[type="radio"]:checked + label,
+.checkbox-group input[type="checkbox"]:checked + label {
+    color: #333;
+    font-weight: bold;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="content-wrap">
+        <section id="home">
+            <div class="containerHome" style="background-color: #f2f2f2; border: none; border-bottom: 1px solid #ccc;">
+                <nav id="navbar" >
+                    <h1 class="title"><a href="index.html"><img src="images/logo.svg" style="margin-top: 20px;" alt=""></a></h1>
+                    <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+                    <ul class="nav" >
+                        <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                        <li><a href="index.html#notice"><i class="fa-solid fa-bell"></i> Notice/Post</a></li>
+                        <li><a href="gallery.html"><i class="fa-light fa-gallery-thumbnails"></i> Photos</a></li>
+                        <li><a href="form.html"><i class="fa-solid fa-file-invoice"></i> Forms</a></li>
+                        <li><a href="aboutus.html"><i class="fa-regular fa-address-card"></i> About Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="containerMain" >
+                <h1 data-aos="fade-down" data-aos-duration="1000">Select a Form</h1>
+                <div class="formSelector" data-aos="fade-up" data-aos-duration="1000">
+                    <!-- <div onclick="showForm('form1')" style="visibility: hidden;">Form 1</div> -->
+                    <div data-aos="fade-up" data-aos-duration="1000" onclick="toggleForm('orientation')">Register for VSN Robotics Club Orientation!</div>
+                    <!-- <div onclick="showForm('form3')" style="visibility: hidden;">Form 3</div> -->
+                </div>
+                
+                <div id="orientation" class="containerForm" style="display:none;">
+                    <h2>VSN Robotics Club orientation Form.</h2>
+                    <p>Please note that this orientation program is for Grade 11 only!</p><br>
+                    <p>Deadline: August 20, 2024</p><br>
+                    <form id="form1">
+
+
+                        <div class="input-group">
+                            <input type="text" id="name" name="entry.1546296022" required class="input">
+                            <label class="user-label" for="name">Name</label>
+                        </div>
+                    
+                        <div class="input-group">
+                            <input type="email" id="email" name="entry.881099588" required class="input">
+                            <label class="user-label" for="email">Email</label>
+                        </div>
+                    
+                        <div class="input-group">
+                            <input type="tel" id="phone" name="entry.1960661192" required class="input">
+                            <label class="user-label" for="phone">Phone No</label>
+                        </div>
+                          <div class="input-group">
+                            <select id="faculty" name="entry.2031196208" required class="input">
+                                <option value="Science">Science</option>
+                                <option value="Management">Management</option>
+                            </select>
+                            <label class="user-label" for="faculty">Faculty</label>
+                        </div>
+                    
+                        <div class="input-group">
+                            <input type="text" id="section" name="entry.46542980" class="input" required>
+                            <label class="user-label" for="section">Section</label>
+                        </div>
+                    
+                        <div class="form-section">
+                            <label class="question-label" for="experience">Have you participated in any robotics-related activities before?</label>
+                            <div class="radio-group">
+                                <div>
+                                    <input type="radio" id="experience-yes" name="entry.1066867511" value="Yes" required>
+                                    <label for="experience-yes">Yes</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="experience-no" name="entry.1066867511" value="No" required>
+                                    <label for="experience-no">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <label class="question-label" for="confirm">I confirm my attendance at the Robotics Orientation Program on Bhadra 2081 from 10:30 AM to 11:30 AM<br></label>
+                            <input type="checkbox" id="confirm" name="entry.1396119478" value="Yes" required>
+                            <label for="confirm">I agree</label>
+
+
+                        </div>
+                        
+                    
+                        <button type="submit">Submit</button>
+                    
+                    </form>
+                    
+                    
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footerContainer">
+            <div class="footerLogo">
+                <h3>VSN Robotics Club</h3>
+                <h6 style="margin-top: 5px; font-weight: normal; color:#e6d9d9; ">Minbhawan, Kathmandu, Nepal</h6>
+            </div>
+            <div class="footerLinks">
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="index.html#notice"><i class="fa-solid fa-bell"></i> Notice/Post</a></li>
+                    <li><a href="gallery.html"><i class="fa-light fa-gallery-thumbnails"></i> Photos</a></li>
+                    <li><a href="form.html"><i class="fa-solid fa-file-invoice"></i> Forms</a></li>
+                    <li><a href="aboutus.html"><i class="fa-regular fa-address-card"></i> About Us</a></li>
+                </ul>
+            </div>
+            <div class="footerSocial">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/vsnroboticsclub" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/vsnroboticsclub/"  target="_blank"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>
+                <a href="tel:+9779813457609">+977 9813457609</a><br>
+                <a href="mailto:info@vsnroboticsclub.com">info@vsnroboticsclub.com</a>
+              </p>
+            <p style="font-size: 0.8em; margin-top: 20px;">&copy; 2025 VSN Robotics Club. All rights reserved.<br><br>Created by VSN Robotics Club Batch 2081</p>
+        </div>
+    </footer>         
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data === 'toggleForm') {
+                toggleForm('orientation');
+            }
+        });
+
+        function toggleForm(formId) {
+            var form = document.getElementById(formId);
+            form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/.netlify/functions/api-key-fetcher')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch Netlify function data');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const f2 = data.f2;
+
+                    if (!f2) {
+                        throw new Error('Form URL is not defined');
+                    }
+
+                    console.log("Form URL fetched:", f2);
+
+                    document.getElementById('form1').addEventListener('submit', function(event) {
+                        event.preventDefault(); 
+
+                        var formData = new FormData(this);
+                        var submitButton = this.querySelector('button[type="submit"]');
+                        var originalButtonText = submitButton.textContent;
+                        submitButton.disabled = true;
+                        submitButton.textContent = "Please Wait...";
+
+                        fetch(f2, {
+                            method: 'POST',
+                            body: formData,
+                            mode: 'no-cors'
+                        })
+                        .then(response => {
+                            if (response.ok || response.type === 'opaque') {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Registration has been submitted successfully!",
+                                    showCloseButton: true,
+                                    confirmButtonText: "OK",
+                                }).then(() => {
+                                    submitButton.disabled = false;
+                                    submitButton.textContent = originalButtonText;
+                                });
+                                this.reset();
+                            } else {
+                                throw new Error('Failed to submit form');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error submitting form:', error);
+                            Swal.fire({
+                                icon: "error",
+                                title: "Failed to send form.",
+                                text: "Something went wrong!",
+                                showConfirmButton: true,
+                                confirmButtonText: "OK",
+                            }).then(() => {
+                                submitButton.disabled = false;
+                                submitButton.textContent = originalButtonText;
+                            });
+                        });
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching Netlify function data:', error);
+                });
+        });
+
+    </script>
+    
+
+</body>
+</html>
+
+

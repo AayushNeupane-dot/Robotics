@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSN Robotics Club</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="icon" href="images/favicon.svg">
+    <link rel="manifest" href="images/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="js/main.js" defer></script>
+    <script src="https://kit.fontawesome.com/27061a3f4a.js" crossorigin="anonymous"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var swiper = new Swiper(".swiper", {
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        });
+    </script>
+</head>
+<body>
+    <section id="home">
+        <div class="containerHome">
+            <nav id="navbar">
+                <h1 class="title">
+                    <a href="index.html"><img src="images/logo.svg" alt=""></a>
+                </h1>
+                <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+                <ul class="nav">
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="index.html#notice"><i class="fa-solid fa-bell"></i> Notice/Post</a></li>
+                    <li><a href="gallery.html"><i class="fa-light fa-gallery-thumbnails"></i> Photos</a></li>
+                    <li><a href="form.html"><i class="fa-solid fa-file-invoice"></i> Forms</a></li>
+                    <li><a href="aboutus.html"><i class="fa-regular fa-address-card"></i> About Us</a></li>
+                </ul>
+            </nav>
+            <div class="frontSlider">
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div class="slideContent">
+                                <h2>About Us</h2>
+                            </div>
+                            <img src="images/gallery/gallery3.jpeg" alt="image 3" class="fresponsiveImage">
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slideContent">
+                                <h2>About Us</h2>
+                            </div>
+                            <img src="images/gallery/gallery16.jpeg" alt="image 16" class="fresponsiveImage">
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slideContent">
+                                <h2>About Us</h2>
+                            </div>
+                            <img src="images/gallery/gallery20.JPG" alt="image 20" class="fresponsiveImage">
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slideContent">
+                                <h2>About Us</h2>
+                            </div>
+                            <img src="images/gallery/gallery14.jpeg" alt="image 14" class="fresponsiveImage">
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slideContent">
+                                <h2>About Us</h2>
+                            </div>
+                            <img src="images/gallery/gallery18.jpeg" alt="image 18" class="fresponsiveImage">
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slideContent">
+                                <h2>About Us</h2>
+                            </div>
+                            <img src="images/gallery/gallery13.jpeg" alt="image 13" class="fresponsiveImage">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination" style="display: none;"></div>
+                    <div class="swiper-button-prev" style="display: none;"></div>
+                    <div class="swiper-button-next" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="acontainerAbout" id="about" data-aos="fade-up">
+            <h1 data-aos="fade-down">About Us</h1>
+            <div class="aboutContent">
+                <div class="aboutImage" data-aos="fade-right">
+                    <img src="images/logo.svg" alt="About Us Image">
+                </div>
+                <div class="aboutText" data-aos="fade-left">
+                    <p>We are VSN Robotics Club, a passionate team dedicated to advancing robotics technology and making a positive impact in the world. With a focus on innovation and collaboration, we strive to push the boundaries of what is possible in robotics.</p>
+                    <p>Our mission is to develop cutting-edge robotic solutions that address real-world challenges and improve lives. From industrial automation to healthcare robotics, we are committed to creating intelligent machines that enhance productivity, safety, and quality of life.</p>
+                    <p>At VSN Robotics Club, we believe in the power of technology to shape a better future. Join us on our journey as we explore new frontiers and transform ideas into reality.</p>
+                    <button class="btnLearnMore" onclick="window.location.href='aboutus.html'" data-aos="zoom-in">Learn More</button>
+                </div>
+            </div>
+        </div>
+        <div class="executive" id="executive" data-aos="fade-up">
+            <h1 id="etitle" data-aos="fade-down">Executive Board</h1>
+            <div class="executivecontent" data-aos="fade-in">
+                <div class="executive">
+                    <p id="pexecutive" data-aos="fade-left">Experience the fusion of passion and precision at V.S. Niketan Robotics Club (VSNRC). Our Executive Board leads the way, comprising visionary individuals dedicated to cultivating a culture of innovation and excellence in the realm of robotics.</p>
+                </div>
+            </div>
+        </div>
+        <div class="memberBoxfounder" data-aos="fade-up">
+            <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/bishal.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+            <h2 id="name">Bishal Gurung<br></h2>
+            <p class="position">Club Founder & Mentor<br></p>
+            <p class="description">The Club Founder initiated the V.S. Niketan Robotics Club (VSNRC), fostering a culture of innovation and technological advancement.</p>
+        </div>
+        <div class="members" data-aos="fade-up">
+            <div class="memberBox" data-aos="fade-right">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/eevan.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Eevan Raj Lama <br></h2>
+                <p class="position">President<br></p>
+                <p class="description">The President steers the club, offering vision and motivation for its innovative projects and ensuring success in robotics competitions.</p>
+            </div>
+            <div class="memberBox" data-aos="fade-left">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/nishant.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Nishant Kumar Bhandari <br></h2>
+                <p class="position">Vice-President<br></p>
+                <p class="description">The Vice President assists the President in leading the club, offering support and guidance to drive its innovative initiatives forward. Responsibilities also include making/updating the website, managing social handles, and graphic designing.</p>
+            </div>
+            <div class="memberBox" data-aos="fade-right">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/yugal.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Yugal Limbu <br></h2>
+                <p class="position">Secretary<br></p>
+                <p class="description">The Secretary oversees club records, communications, and budget, ensuring efficient organization and coordination of all club activities.</p>
+            </div>
+            <div class="memberBox" data-aos="fade-left">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/saman.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Saman Neupane<br></h2>
+                <p class="position">Membership Director<br></p>
+                <p class="description">The Membership Director manages member recruitment and retention, ensuring a strong and engaged membership base.</p>
+            </div>
+            <div class="memberBox" data-aos="fade-right">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/shaurya.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Shaurya Garg <br></h2>
+                <p class="position">Project Manager<br></p>
+                <p class="description">The Project Manager directs the planning and implementation of projects, ensuring they align with club objectives and achieve successful results.</p>
+            </div>
+            <div class="memberBox" data-aos="fade-left">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/katrina.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Katrina Bk <br></h2>
+                <p class="position">Event Manager<br></p>
+                <p class="description">The Event Manager oversees the planning and execution of club events, ensuring smooth operations and active member participation.</p>
+            </div>
+            <div class="memberBox" data-aos="fade-left">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/anjali.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Anjali Rajya Laxmi Shahi <br></h2>
+                <p class="position">Event Manager<br></p>
+                <p class="description">The Event Manager is responsible for organizing and coordinating club events, ensuring every detail is planned and executed to engage members and promote the club's mission.</p>
+            </div>
+            <!-- sda-->
+            <div class="memberBox" data-aos="fade-left">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/sawol.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Sawol Singh <br></h2>
+                <p class="position">Asst. Secretary & Graphic Designer<br></p>
+                <p class="description">Responsible for supporting administrative tasks and creating visually appealing designs to enhance the club's branding and communication.</p>
+            </div>
+            <div class="memberBox" data-aos="fade-left">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/hari.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Hari Lal BK <br></h2>
+                <p class="position">Asst. Project Manager<br></p>
+                <p class="description">The Assistant Project Manager collaborates with the Project Manager in overseeing and executing club projects, helping to manage timelines, resources, and team coordination to ensure successful project completion.</p>
+            </div>
+        </div>
+            <div class="memberslt" data-aos="fade-up">
+                <div class="memberBoxlast" data-aos="fade-up">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/aayush.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id="name">Aayush Neupane <br></h2>
+                    <p class="position">Asst. Event Manager<br></p>
+                    <p class="description">The Assistant Event Manager supports the Event Manager in organizing and coordinating club events, assisting in the planning and execution of activities to engage members and promote the club's mission.</p>
+                </div>
+                <div class="memberBoxlast" data-aos="fade-up">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/kishwor.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id="name">Kishwor Dulal <br></h2>
+                    <p class="position">Asst. Membership Director<br></p>
+                    <p class="description">The Assistant Membership Director helps the Membership Director in managing club membership, assisting in member recruitment, retention, and engagement to foster a strong and active community.</p>
+                </div>
+            </div>
+                    <!-- <div class="memberBoxlast">
+                        <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/unknown.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                        <h2 id ="name">Katrina Bishwokarma <br></h2>
+                        <p class="position">Member<br></p>
+                        <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+                    </div>
+                    <div class="memberBoxlast">
+                        <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/anjali.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                        <h2 id ="name">Anjali Rajya Laxmi Shahi <br></h2>
+                        <p class="position">Member<br></p>
+                        <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+                    </div> -->        
+        <div class="prev-exceutive" id="prev-executive" data-aos="fade-up" data-aos-duration="1000">
+            <h1 id="pvsrev-etitle" data-aos="fade-down" data-aos-duration="1000">Previous Executive Board Members</h1>
+            <div class="executivecontent" data-aos="fade-up" data-aos-duration="1500">
+                <div class="executive">
+                    <p id="pexecutive" data-aos="fade-up" data-aos-duration="2000">Reflecting on our journey, we honor the contributions of past leaders whose dedication and expertise have shaped the V.S. Niketan Robotics Club (VSNRC). Their legacy continues to inspire us as we strive for innovation and excellence in robotics.</p>
+                </div>
+            </div>
+        </div>
+                    
+            
+        <div class="preve-Selector" data-aos="fade-up" data-aos-duration="1000">
+            <div onclick="toggleprev('2080')" data-aos="zoom-in" data-aos-duration="1500">
+                Executive Board 2080.
+            </div>
+        </div>        
+        <div id="2080" class="prevbutton-Selector">
+        <div class="prev-members">
+            <div class="memberBox">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/bishal.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id ="name">Bishal Gurung<br></h2>
+                <p class="position">Club Founder<br></p>
+                <p class="description">The Club Founder established V.S. Niketan Robotics Club (VSNRC), laying the foundation for its innovative pursuits.</p>
+            </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/kaji.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Sujal Kaji Shrestha<br></h2>
+                    <p class="position">Club Mentor<br></p>
+                    <p class="description">The Club Mentor guides and supports members, ensuring their success in robotics projects and competitions.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/samip.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Samip Khatiwada <br></h2>
+                    <p class="position">Club Mentor<br></p>
+                    <p class="description">The Club Mentor guides and supports members, ensuring their success in robotics projects and competitions.</p>
+                </div><br>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/aftab.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Aftab Reja <br></h2>
+                    <p class="position">President<br></p>
+                    <p class="description">
+                        The President leads the club, providing vision and inspiration for its innovative endeavors, ensuring the success of robotics projects and competitions.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/raisha.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Raisha Basnet <br></h2>
+                    <p class="position">Vice-President<br></p>
+                    <p class="description">The Vice President assists the President in leading the club, offering support and guidance to drive its innovative initiatives forward.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/nishant.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Nishant Kumar Bhandari <br></h2>
+                    <p class="position">Supervisor & Social Media Manager<br></p>
+                    <p class="description">The Supervisor and Social Media Manager effectively manages club operations and social media presence, ensuring smooth project execution and engaging online content.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/eevan.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Eevan Raj Lama <br></h2>
+                    <p class="position">Secretary<br></p>
+                    <p class="description">The Secretary maintains club records and communications, ensuring effective organization and coordination of club activities.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/yugal.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Yugal Limbu <br></h2>
+                    <p class="position">Vice-Secretary<br></p>
+                    <p class="description">The Vice Secretary supports the Secretary in their duties, assisting with record-keeping and communication to ensure the smooth operation of the club.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/bidhya.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Bidhya Basnet <br></h2>
+                    <p class="position">Event Manager<br></p>
+                    <p class="description">The Event Manager plans and coordinates club events, ensuring seamless execution and member engagement. Responsibilities also include managing the event budget and logistics.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/manish.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Manish Pokharel <br></h2>
+                    <p class="position">Project Manager<br></p>
+                    <p class="description">The Project Manager leads project planning and execution, ensuring alignment with club goals for successful outcomes.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/bijya.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Bijay Adhikari<br></h2>
+                    <p class="position">Project Manager<br></p>
+                    <p class="description">The Project Manager leads project planning and execution, ensuring alignment with club goals for successful outcomes.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/shaurya.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Shaurya Garg<br></h2>
+                    <p class="position">Tech Manager<br></p>
+                    <p class="description">The Tech Manager oversees the technical aspects of the club, ensuring that equipment and technology are utilized efficiently and effectively.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/saman.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Saman Neupane <br></h2>
+                    <p class="position">Member<br></p>
+                    <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/unknown.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Nabin Bhandari <br></h2>
+                    <p class="position">Member<br></p>
+                    <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/sushan.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Sushan Bishwokarma <br></h2>
+                    <p class="position">Member<br></p>
+                    <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/Shantanu.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Shantanu Mahaseth <br></h2>
+                    <p class="position">Member<br></p>
+                    <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/kundan.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Kundan Shah <br></h2>
+                    <p class="position">Member<br></p>
+                    <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+                </div>
+                <div class="memberBox">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/rakshya.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                    <h2 id ="name">Rakshya Lama <br></h2>
+                    <p class="position">Member<br></p>
+                    <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+                </div> 
+        <div class="memberslt">
+            <div class="memberBoxlast">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/unknown.jpg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Katrina Bishwokarma <br></h2>
+                <p class="position">Member<br></p>
+                <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+            </div>
+            <div class="memberBoxlast">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-image: url('images/membersimage/anjali.jpeg'); background-size: cover; margin-bottom: 20px;"></div>
+                <h2 id="name">Anjali Rajya Laxmi Shahi <br></h2>
+                <p class="position">Member<br></p>
+                <p class="description">The Member actively participates in club activities, contributing to projects and fostering a collaborative environment.</p>
+            </div>
+        </div>
+        </div>
+            </div>
+           
+
+
+        <footer class="footer">
+            <div class="footerContainer">
+                <div class="footerLogo">
+                    <h3>VSN Robotics Club</h3>
+                    <h6 style="margin-top: 5px; font-weight: normal; color:#e6d9d9; ">Minbhawan, Kathmandu, Nepal</h6>
+                </div>
+                <div class="footerLinks">
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                        <li><a href="index.html#Notice"><i class="fa-solid fa-bell"></i> Notice/Post</a></li>
+                        <li><a href="gallery.html"><i class="fa-light fa-gallery-thumbnails"></i> Photos</a></li>
+                        <li><a href="form.html"><i class="fa-solid fa-file-invoice"></i> Forms</a></li>
+                        <li><a href=""><i class="fa-regular fa-address-card"></i> About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footerSocial">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://www.facebook.com/vsnroboticsclub" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/vsnroboticsclub/"  target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p>
+                    <a href="tel:+9779813457609">+977 9813457609</a><br>
+                    <a href="mailto:info@vsnroboticsclub.com">info@vsnroboticsclub.com</a>
+                  </p>
+                <p style="font-size: 0.8em; margin-top: 20px;">&copy; 2025 VSN Robotics Club. All rights reserved.<br><br>Created by Nishant.</p>
+            </div>
+        </footer> 
+        </section>
+        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+    function toggleprev(prev) {
+        var prev = document.getElementById(prev);
+        if (prev.style.display === 'none' || prev.style.display === '') {
+            prev.style.display = 'block';
+        } else {
+            prev.style.display = 'none';
+        }
+    }
+        </script>
+    </body>
+    </html>
